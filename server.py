@@ -23,9 +23,13 @@ def sent_analyzer():
     response = sentiment_analyzer(text_to_analyze)
     # Extract the label and score from the response
     label = response['label']
-    score = response['label']
+    score = response['score']
     # Return the formatted string with the sentiment label and score
-    return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+    identified_as = label.split("_")[1]
+    return (
+        f"The given text has been identified as {identified_as} "
+        f"with a score of {score}."
+    )
 @app.route("/")
 def render_index_page():
     ''' This function initiates the rendering of the main application
